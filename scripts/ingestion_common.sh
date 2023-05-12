@@ -25,12 +25,7 @@ function create_venv {
         # Create tmp file to store requirements using provided recipe id. 
         req_file="$tmp_dir/requirements-${task_id}.txt"
         touch "$req_file"
-        if [ "$datahub_version" == "latest" ]; then
-            echo "Latest version will be installed"
-            echo "acryl-datahub[${all_plugins}]" > "$req_file"
-        else
-            echo "acryl-datahub[${all_plugins}]==$datahub_version" > "$req_file"
-        fi
+        echo "/datahub-ingestion[${all_plugins}]" > "$req_file"
         # Install extra deps
         if [ ${#extra_deps[@]} -ne 0 ]; then
             for extra_dep in ${extra_deps[@]}; do
