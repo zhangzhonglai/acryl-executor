@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: acryl-executor
+Version: 0.0.3.9
+Summary: An library used within Acryl Agents to execute tasks
+Home-page: https://datahubproject.io/
+License: Apache License 2.0
+Project-URL: Documentation, https://datahubproject.io/docs/
+Project-URL: Source, https://github.com/linkedin/datahub
+Project-URL: Changelog, https://github.com/linkedin/datahub/releases
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: Unix
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Environment :: Console
+Classifier: Environment :: MacOS X
+Classifier: Topic :: Software Development
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENSE
+
+# Acryl Executor
+
+Remote execution agent used for running DataHub tasks, such as ingestion powered through the UI. 
+
+
+```bash
+python3 -m venv --upgrade-deps venv
+source venv/bin/activate
+pip3 install .
+```
+
+## Notes
+
+By default, this library comes with a set of default task implementations: 
+
+### RUN_INGEST Task
+
+- **SubprocessProcessIngestionTask** - Executes a metadata ingestion run by spinning off a subprocess. Supports ingesting from a particular version, and with a specific plugin (based on the platform type requested) 
+
+- **InMemoryIngestionTask** - Executes a metadata ingestion run using the datahub library in the same process. Not great for production where we can see strange dependency conflicts when certain packages are executed together. Use this for testing, as it has no ability to check out a specific DataHub Metadata Ingestion plugin. 

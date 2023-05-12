@@ -1,0 +1,2 @@
+[datahub.executor.task.plugins]
+sub_process_ingestion_task = acryl.executor.execution.sub_process_ingestion_task:SubProcessIngestionTask
